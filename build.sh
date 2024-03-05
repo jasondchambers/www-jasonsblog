@@ -1,2 +1,3 @@
 #!/bin/sh
-docker build -t www-jasonsblog:latest .
+git submodule update --init --recursive
+docker build -t www-jasonsblog:latest . --progress plain
