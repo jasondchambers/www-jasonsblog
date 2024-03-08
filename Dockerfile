@@ -13,6 +13,8 @@ RUN hugo --minify
 # Use a lightweight base image to serve the static site
 FROM nginx:alpine
 
+LABEL org.opencontainers.image.source https://github.com/jasondchambers/www-jasonsblog
+
 # Copy the static site from the builder stage into the nginx web root directory
 COPY --from=builder /site/public /usr/share/nginx/html
 
