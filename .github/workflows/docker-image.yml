@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Update Git submodules - ie. themes
+      run: git submodule update --init --recursive
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag www-jasonsblog:$(date +%s)
