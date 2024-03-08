@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI for GHCR
 
 on:
   push:
@@ -11,7 +11,7 @@ env:
 
 jobs:
 
-  build:
+  build_and_publish:
 
     runs-on: ubuntu-latest
     permissions:
@@ -24,20 +24,8 @@ jobs:
     - name: Update Git submodules - ie. themes
       run: git submodule update --init --recursive
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
-
-    - name: Log in to GitHub Packages Docker registry
-      run: echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-    - name: Push image
+    - name: Build the push the image 
       run: |
-        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-        [ "$VERSION" == "main" ] && VERSION=latest
-        echo IMAGE_ID=$IMAGE_ID
-        echo VERSION=$VERSION
-        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-        docker push $IMAGE_ID:$VERSION
+        echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker build . --file Dockerfile --tag ghcr.io/${{github.actor}}/$IMAGE_NAME:latest
+        docker push ghcr.io/${{github.actor}}/$IMAGE_NAME:latest
