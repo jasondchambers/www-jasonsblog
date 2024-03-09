@@ -1,10 +1,6 @@
 # www-jasonsblog
 Website for articles
 
-Designed to be built and run as a container.
+To run:
 
-    $ ./build.sh
-
-    $ ./check.sh
-
-    $ ./run.sh
+$ docker run ghcr.io/yzxbmlf/www-jasonsblog:latest
