@@ -3,4 +3,4 @@ Website for articles
 
 To run:
 
-$ docker run ghcr.io/yzxbmlf/www-jasonsblog:latest
+    $ docker run ghcr.io/yzxbmlf/www-jasonsblog:latest
