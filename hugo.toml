@@ -4,6 +4,11 @@ title = "Circle in a Spiral"
 theme = 'ananke'
 resourceDir = "../resources"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 Paginate = 10 # this is set low for demonstrating with dummy content. Set to a higher number
