@@ -1,4 +1,4 @@
-baseURL = 'https://circleinaspiral.com/'
+#baseURL = 'https://circleinaspiral.com/'
 languageCode = 'en-us'
 title = "Circle in a Spiral"
 theme = 'ananke'
