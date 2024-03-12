@@ -14,7 +14,7 @@ Replace tag with the desired number. You can find these on [GitHub](https://gith
 
 The image is also pushed to Docker Hub. Run as follows:
 
-    $ docker run -p 8080:80 yzxbmlf/www-jasonsblog:latest:<tag>
+    $ docker run -p 8080:80 yzxbmlf/www-jasonsblog:<tag>
 
 Replace tag with the desired number. You can find these on [Docker Hub](https://hub.docker.com/repository/docker/yzxbmlf/www-jasonsblog/general).
 
