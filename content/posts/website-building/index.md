@@ -12,7 +12,7 @@ At the end, I summarize the take-aways you might consider for whatever your next
 
 ## The Concept
 
-The design concept is similar to those historical pictures you may have seen on the web that show a photo of how the place looked in the past and a photo of how it looks today from the same point of view. A slider enables the viewer to compare before and after without having to adjust their gaze. That was the kind of experience I wanted to created. I wanted it to be accessible from mobile devices. 
+The design concept is similar to those historical pictures you may have seen on the web that show a photo of how the place looked in the past and a photo of how it looks today from the same point of view. A slider enables the viewer to compare before and after without having to adjust their gaze. That was the kind of experience I wanted to create. I wanted it to be accessible from mobile devices. 
 
 {{< figure src="stratfordremodel.jpeg" alt="The initial design concept involving sliders to show before and after" caption="The initial design concept involving sliders to show before and after" >}}
 
