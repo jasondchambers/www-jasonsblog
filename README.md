@@ -24,7 +24,6 @@ The pipeline also publishes to DockerHub, as this is supported by GCP (Google Cl
 
 Replace tag with the desired number. You can find these on [Docker Hub](https://hub.docker.com/repository/docker/yzxbmlf/www-jasonsblog/general).
 
-
-The image is built automatically as a GitHub action, however if you can build locally as follows:
+The image is built automatically as a GitHub action, however you can build locally as follows:
 
     $ docker build .
