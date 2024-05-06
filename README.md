@@ -3,6 +3,10 @@ Website for articles. Will eventually be used to replace my Medium subscription.
 
 The website is called [circleinaspiral.com](https://circleinaspiral.com).
 
+The theme is incorporated as a submodule. Immediately, upon clone be sure to run this:
+
+    git submodule update --init --recursive
+
 During development, simply run the following:
 
     $ hugo server
@@ -20,8 +24,7 @@ The pipeline also publishes to DockerHub, as this is supported by GCP (Google Cl
 
 Replace tag with the desired number. You can find these on [Docker Hub](https://hub.docker.com/repository/docker/yzxbmlf/www-jasonsblog/general).
 
-The container is deployed using Google Cloud Run and can be managed in [Google Cloud](https://console.cloud.google.com/home/dashboard?hl=en&project=micro-spanner-416713).
 
-The domain circleinaspiral.com is managed using [SquareSpace](https://account.squarespace.com/domains).
+The image is built automatically as a GitHub action, however if you can build locally as follows:
 
-The deployed container in Google Cloud Run, is connected to a Firebase Hosting site. This was the simplest way to associate my custom domain with it. [Firebase Console](https://console.firebase.google.com/u/0/).
+    $ docker build .
