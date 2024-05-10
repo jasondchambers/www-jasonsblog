@@ -1,5 +1,5 @@
 +++
-title = 'One Of The Greatest Games Ever From Scratch'
+title = 'Re-creating One Of The Greatest Games Ever.. From Scratch'
 date = 2024-05-10T09:00:00-04:00
 featured_image = "first_npc.png"
 +++
