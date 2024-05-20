@@ -8,7 +8,7 @@ In this article, I'd like to share my experiences of over 20+ years of architect
 
 Firstly, it may make sense to define what software architecture is. A software architecture describes the fundamental structures of a software system and the interactions between these structures. It defines the essential elements of a system's internal organization. Similar to traditional building architecture, it implies some kind of plan or blueprint for the development teams to follow. However, inevitably over time what usually happens is the actual architecture you end up with will likely differ from what you may have intended. As you zoom in, the software architecture is also about the technology choices you make and the patterns you plan to use.
 
-I personally don't like the term "architecture", but it is widely accepted and can be argued to be similar enough to traditional (building) architecture.
+I personally don't like the term "architecture", but it is widely accepted and can be argued to be similar enough to traditional (building) architecture. Software architecture is an ongoing concern when compared to traditional (building) architecture, and so is something that needs to be maintained.
 
 If you are interested in diving more into the definition, I recommend [Martin Fowler's essay](https://www.martinfowler.com/architecture/)
 
@@ -50,17 +50,21 @@ The fourth and final component for consideration is the people who do the actual
 
 ## Guidelines For Avoiding A Crufty Architecture
 
-Firstly, these are guidelines shaped by my experiences. They may or may not be applicable for your particular situation so don't follow blindly.
+Firstly, these are guidelines shaped by my experiences. They may or may not be applicable for your particular situation so don't follow blindly. 
 
 ### Plan For Architecture Evolution
 
 We cannot predict the future. Nobody can, so why even attempt to make hard architectural decisions that you and the team will have to live with for many years? Instead, design and build for what you need and what you know right now. Evaluate the architecture by asking the question - "Is it still easy to change with confidence"? Over the course of two years, while at Urjanet we evolved the architecture three times (Ozone -> Smog -> Rainforest). Each iteration replaced the previous iteration. As this was a startup, the scale of each iteration met the scale needs of the growing business at the time.
 
+This incremental approach I have found is valuable because it helps to avoid over and under-engineering.
+
 ### Favor Small Independent Units Of Deployment
 
-Smaller units are lighter, easier to understand and as long as they are independent they support a higher rate of change with confidence. During my tenure with Lancope/Cisco as a Engineering Leader of the Strealthwatch/Secure Network Analytics product, we had major releases every six months. It was a large and complex product. We did attempt to accelerate the release cycle to every six months, but we had to backtrack because we increased maintenance costs as we increased the number of released versions we needed to support. In addition, the upgrade process was fairly involved and as such our customers were not able to upgrade at the same pace (the product is an on-premise product). The slow release cycle was frustrating to everybody. We knew the core product architecture needed some attention, but the market does not wait and so we needed a quick way to get value out to the market sooner.
+Smaller units are lighter, easier to understand and as long as they are independent they support a higher rate of change with confidence. During my tenure with Lancope/Cisco as an Engineering Leader of the [Strealthwatch/Secure Network Analytics product](https://www.cisco.com/site/us/en/products/security/security-analytics/secure-network-analytics/index.html), we had major releases every six months. It was a large and complex product. We did attempt to accelerate the release cycle to every three months, but we had to backtrack because we increased maintenance costs as we increased the number of released versions we needed to support. In addition, the upgrade process was fairly involved and as such our customers were not able to upgrade at the same pace (the product is an on-premise product). The slow release cycle was frustrating to everybody. We knew the core product architecture needed some attention, but the market does not wait and so we needed a quick way to get value out to the market sooner.
 
 A creative work-around to these challenges, the concept of Apps were introduced. Apps are similar in concept to the apps you install on a smartphone; they are optional, independently releasable features that enhance and extend the capabilities of the core product. The release schedule for Apps is independent from the core product, and so they could be updated as needed and those updates are not tied to the schedule of a core release. The ability to gather timely customer feedback, iterate quickly, start with a clean-sheet and develop on a stable platform without the need for coordination across multiple teams enabled the various teams who worked on Apps to deliver some incredible results. The developer experience vastly improved.
+
+The design of UNIX provides a wonderful example of the enduring quality of modularity.
 
 ### Understand The Relationship Between the Architecture and the Organization Structure
 
@@ -70,7 +74,9 @@ Earlier in my career, during my delta.com days, we were struggling to increase o
 
 The problem was that how we organized into teams did not match how we organized the architecture. The Application Teams were organized into three areas: 1. Preflight (Online Check-in, airport wait times, Flight Information etc.); 2. Loyalty (i.e SkyMiles related functionality); 3. Booking. Each layer was therefore a shared ownership model (which should be avoided as it becomes a breeding ground for [Diffusion of Responsibility](https://en.wikipedia.org/wiki/Diffusion_of_responsibility).
 
-There was tight coupling across each layer. Although we had pretty decent automated test coverage, our QA lead could not be assured that a change in the UI layer from the Booking team, would not potentially introduce an unwanted side-effect across the entire site. This drove up the cost of change and the risk of change. The decision was made to adopt a vertical slice architecture where each slice was under the complete control and ownership of a single team.This implied some code duplication to ensure each vertical slice could be fully self-contained with zero dependencies on other vertical slices. This felt a little wrong as it went against the grain of "code re-use", but the truth is I would always favor loose coupling over code-reuse. There were some stable common elements where it made complete sense to push down and so we extracted that into a common layer called "Core". The approach worked - in fact, the teams wanted even more fine-grained isolation.
+There was tight coupling across each layer. Although we had pretty decent automated test coverage, our QA lead could not be assured that a change in the UI layer from the Booking team, would not potentially introduce an unwanted side-effect across the entire site. This drove up the cost of change and the risk of change. The decision was made to adopt a vertical slice architecture where each slice was under the complete control and ownership of a single team.This implied some code duplication to ensure each vertical slice could be fully self-contained with zero dependencies on other [vertical slices](https://www.youtube.com/watch?v=_1rjo2l17kI). This felt a little wrong as it went against the grain of "code re-use", but the truth is I would always favor loose coupling over code-reuse. There were some stable common elements where it made complete sense to push down and so we extracted that into a common layer called "Core". The approach worked - in fact, the teams wanted even more fine-grained isolation.
+
+We continued to slice the architecture into more fine-grained units. There were features that were very stable and had a low rate of change and we wanted to avoid un-necesary testing where possible (at least until the cost of testing could be lowered). Finally, we evolved the architecture further where each team had their own application server instance providing O/S process isolation. 
 
 <p style='text-align: center;'>. . .</p>
 
