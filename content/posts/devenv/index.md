@@ -6,11 +6,11 @@ featured_image = "pde.png"
 
 In Figure 1 below, you will see a photo of a "mobile" thin-client version of my personalized development environment. Look closely. You will see it is running on an iPad. I have found the iPad to be pretty good for on-the-go development because a) it is light b) has long battery life c) has a great screen d) is cheaper than a typical developer-spec laptop and e) there are no secrets or code are stored locally presenting less of a security headache if the device is lost or stolen.
 
-Look even more closely. There are no compromizes made (I do however leave my beloved, big and heavy [Unicomp New Model M keyboard](https://www.pckeyboard.com/page/product/NEW_M) behind). You will see I'm running my preferred toolset including [tmux](https://github.com/tmux/tmux/wiki), [Neovim](https://neovim.io) and [zsh](https://www.zsh.org) tripped out with [starship](https://starship.rs). The [colors](https://catppuccin.com) look beautiful. The [fonts](https://www.nerdfonts.com) are pleasing to the eye.
+Look even more closely. There are no compromizes made (I do however leave my beloved, big and heavy [Unicomp New Model M keyboard](https://www.pckeyboard.com/page/product/NEW_M) behind). You will see I'm running my preferred toolset including [tmux](https://github.com/tmux/tmux/wiki), [Neovim](https://neovim.io) and [zsh](https://www.zsh.org) tripped out with [starship](https://starship.rs). The [colors](https://catppuccin.com) look beautiful. The [fonts](https://www.nerdfonts.com) are pleasing to the eye. In a thin-client model, the bulk of the heavy lifting is done on a server somewhere - tmux isn't really running native on my iPad.
 
 {{< figure src="ipad_tmux_neovim.png" caption="Figure 1 — Neovim and tmux.. On an iPad.. What in the world?" >}}
 
-In this particular scenario, I'm developing my blog using [Hugo](https://gohugo.io). I therefore need to be able to see the results of my code changes in a browser on the client. In Figure 2 below, you will see that this indeed possible:
+In this particular scenario, I'm developing my blog using [Hugo](https://gohugo.io). I therefore need to be able to securely see the results of my code changes in a browser on the client. In Figure 2 below, you will see that this indeed possible:
 
 {{< figure src="ipad_testing.png" caption="Figure 2 — Accessing remote ports safely - how?" >}}
 
@@ -22,19 +22,19 @@ In contrast, here is my "static" thick-client version of my personalized develop
 
 In this article, I will share the process and the tools I used to achieve this outcome.
 
-**Spoiler alert**: I am using [coder.com](https://coder.com) self hosted on my own server in my home lab. I am using [Twingate](https://www.twingate.com) to provide secure access back to home lab for when I travel. I'm using [blink.sh](https://blink.sh) on the iPad as my terminal emulator + SSH client.
+**Spoiler alert**: I am using [Coder](https://coder.com) self hosted on my own server in my home lab. I am using [Twingate](https://www.twingate.com) to provide secure access back to home lab for when I travel. I'm using [blink.sh](https://blink.sh) on the iPad as my terminal emulator + SSH client.
 
 ### Stage 1 - Crafting The Development Environment
 
 This is the slowest stage. The best tools are the ones you are most productive with. If you have been stuck using the same tools for the past few years, you may be missing out. There are some incredible tools available whether you prefer an off-the-shelf IDE such as VS Code or IntelliJ, or prefer something like Emacs, Neovim or Zed.
 
-When I was working at Cisco as a Director of Engineering, I didn't really have an abundance of time to craft my own decent development environment and found VS Code (with VIM motions of course) fit perfectly my casual needs. However, while being on sabbatical I've had the luxury of time to invest in crafting my own personalized development environment that fits me like a glove.
+When I was working at Cisco as a Director of Engineering, I didn't really have the time to craft my own decent development environment and found VS Code (with VIM motions of course) fit perfectly my casual needs. However, while being on sabbatical I've had the luxury of time to invest in crafting my own personalized development environment that fits me like a glove.
 
 These video courses from typecraft provided me with the motivation to get started: [Neovim for Newbs](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn) and [Tmux for Newbs](https://www.youtube.com/playlist?list=PLsz00TDipIfdrJDjpULKY7mQlIFi4HjdR). In addition, I also found inspiration from [this](https://www.youtube.com/watch?v=uOnL4fEnldA&t=765s) video by Josean Martinez.
 
-Once you have crafted what works for you, take note of what you installed and how you installed them. You will need this information to build a template using coder.com. If you are working as part of a team, it is important to enable each developer to have control over there personalized development environment. Find out what is common across the entire team in terms of tools, and automate that in such a way that you leave the door open for them to individually customize to their unique needs. 80% automation is better than 0% automation. However, for my team of one of just me, myself and I, a template that fully automates 100% of the development environment is what I need.
+Once you have crafted what works for you, take note of what you installed and how you installed them. You will need this information to build a template using [Coder](https://coder.com). If you are working as part of a team, it is important to enable each developer to have control over there personalized development environment. Find out what is common across the entire team in terms of tools, and automate that in such a way that you leave the door open for them to individually customize to their unique needs. 80% automation is better than 0% automation. However, for my team of one of just me, myself and I, a template that fully automates 100% of the development environment is what I need.
 
-Now might be a good time for you to learn more about coder.com. The best way I think is to watch [@typecraft_dev's](https://x.com/typecraft_dev) wonderful [YouTube video](https://www.youtube.com/watch?v=F9sQPpVVLeQ&t=578s).
+Now might be a good time for you to learn more about [Coder](https://coder.com). The best way I think is to watch [@typecraft_dev's](https://x.com/typecraft_dev) wonderful [YouTube video](https://www.youtube.com/watch?v=F9sQPpVVLeQ&t=578s).
 
 ```docker {linenos=table,linenostart=1}
 FROM ubuntu
