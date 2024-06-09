@@ -18,7 +18,7 @@ Although not obvious from the photo, this development environment workspace was 
 
 In contrast, here is my "static" thick-client version of my personalized development environment. I develop on both Linux and Mac. Can you tell the difference? Notice how consistent the developer experience across all devices. This level of consistency I have found reduces the friction and enables me to be more productive whether I'm working at home on either Linux or Mac, or on the move using my iPad.
 
-{{< figure src="pde.png" caption="Figure 1 — Linux and Mac - but they look the same?" >}}
+{{< figure src="pde.png" caption="Figure 2 — Linux and Mac - but they look the same?" >}}
 
 In this article, I will share the process and the tools I used to achieve this outcome.
 
@@ -28,13 +28,27 @@ In this article, I will share the process and the tools I used to achieve this o
 
 This is the slowest stage. The best tools are the ones you are most productive with. If you have been stuck using the same tools for the past few years, you may be missing out. There are some incredible tools available whether you prefer an off-the-shelf IDE such as VS Code or IntelliJ, or prefer something like Emacs, Neovim or Zed.
 
-When I was working at Cisco as a Director of Engineering, I didn't really have the time to craft my own decent development environment and found VS Code (with VIM motions of course) fit perfectly my casual needs. However, while being on sabbatical I've had the luxury of time to invest in crafting my own personalized development environment that fits me like a glove.
+When I was working at Cisco as a Director of Engineering, I didn't really have the time to craft my own decent development environment and found VS Code (with Vim Motions of course) fit perfectly my casual needs. However, while being on sabbatical I've had the luxury of time to invest in crafting my own personalized development environment that fits me like a glove.
 
 These video courses from typecraft provided me with the motivation to get started: [Neovim for Newbs](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn) and [Tmux for Newbs](https://www.youtube.com/playlist?list=PLsz00TDipIfdrJDjpULKY7mQlIFi4HjdR). In addition, I also found inspiration from [this](https://www.youtube.com/watch?v=uOnL4fEnldA&t=765s) video by Josean Martinez.
 
-Once you have crafted what works for you, take note of what you installed and how you installed them. You will need this information to build a template using [Coder](https://coder.com). If you are working as part of a team, it is important to enable each developer to have control over there personalized development environment. Find out what is common across the entire team in terms of tools, and automate that in such a way that you leave the door open for them to individually customize to their unique needs. 80% automation is better than 0% automation. However, for my team of one of just me, myself and I, a template that fully automates 100% of the development environment is what I need.
+Now might be a good time for you to learn a little about [Coder](https://coder.com). The best way I think is to watch [@typecraft_dev's](https://x.com/typecraft_dev) wonderful [YouTube video](https://www.youtube.com/watch?v=F9sQPpVVLeQ&t=578s).
 
-Now might be a good time for you to learn more about [Coder](https://coder.com). The best way I think is to watch [@typecraft_dev's](https://x.com/typecraft_dev) wonderful [YouTube video](https://www.youtube.com/watch?v=F9sQPpVVLeQ&t=578s).
+Once you have crafted what works for you, take note of what you installed and how you installed them. You will need this information to build a template using [Coder](https://coder.com). If you are working as part of a team, it is important to enable each developer to have control over their personalized development environment. What works for you may not work for everyone else. Find out what is common across the entire team in terms of tools, and automate that in such a way that you leave the door open for them to individually customize to their unique needs. 80% automation is better than 0% automation. However, for my team of one of just me, myself and I, a template that fully automates 100% of the development environment is what I need.
+
+### Stage 2 - Automate
+
+To fully automate the provisioning of my development environment requires the use of Docker, Terraform and Ansible. Coder has lots of starter templates available. I found the Docker template meets my needs. There are other ways supported by Coder so find the way that works for you. It helps to know a little bit about Docker, but it's not essential. I also needed to tweak the Terraform script provided by the template. I hadn't used Terraform before but it was pretty straightforward to inject my own custom code within the template. I chose Ansible as the final step to apply the finishing touches to my development environment.
+
+In Figure 3, you can see the various packages that form the ingredients of my development environment. There is some unavoidable complexity here. It would be wonderful if there was a single package manager to rule them all. Maybe one day there [could be](https://wasi.dev) but not today.
+
+{{< figure src="packages.png" caption="Figure 3 - The packages that form the ingredients of my development environment" >}}
+
+#### Docker
+
+It all begins with building a solid base. Using Docker, I use a base image from Ubunutu. Use whatever base image works for you. The smaller, the better to reduce the maintenance burden of vulnerability management. The only changes I made to the starter template was to add the apt packages I needed and remove the ones I don't need. Although I don't explicitly need build-essential, but some of the Neovim LSP packages do need it ([GNU Make](https://www.gnu.org/software/make/) specifically). I also rely on [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to manage the dot-files. Finally, pipx is needed so that I can install Ansible. The other packages should be fairly self-explanatory.
+
+For reference, here is my Dockerfile:
 
 ```docker {linenos=table,linenostart=1}
 FROM ubuntu
