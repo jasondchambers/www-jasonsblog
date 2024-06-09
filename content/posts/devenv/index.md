@@ -4,6 +4,8 @@ date = 2024-06-08T07:00:00-04:00
 featured_image = "pde.png"
 +++
 
+_(Note: the code snippets do not look great in this article. I'm publishing for now because I want to get the content out. I plan to adjust the styling later)_
+
 In Figure 1 below, you will see a photo of a "mobile" thin-client version of my personalized development environment. Look closely. You will see it is running on an iPad. I have found the iPad to be pretty good for on-the-go development because a) it is light b) has long battery life c) has a great screen d) is cheaper than a typical developer-spec laptop and e) there are no secrets or code are stored locally presenting less of a security headache if the device is lost or stolen.
 
 Look even more closely. There are no compromises made (I do however leave my beloved, big and heavy [Unicomp New Model M keyboard](https://www.pckeyboard.com/page/product/NEW_M) behind). You will see I'm running my preferred toolset including [tmux](https://github.com/tmux/tmux/wiki), [Neovim](https://neovim.io) and [zsh](https://www.zsh.org) tripped out with [starship](https://starship.rs). The [colors](https://catppuccin.com) look beautiful. The [fonts](https://www.nerdfonts.com) are pleasing to the eye. In a thin-client model, the bulk of the heavy lifting is done on a server somewhere - tmux isn't really running native on my iPad.
