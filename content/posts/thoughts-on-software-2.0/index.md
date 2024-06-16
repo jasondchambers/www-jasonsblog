@@ -2,6 +2,7 @@
 title = 'Thoughts on "Software 2.0"'
 date = 2023-11-02T11:13:00-05:00
 featured_image = "robot.png"
+tags = ['AI', 'Software Development']
 +++
 
 Six years ago, Andrej Karpathy wrote an article entitled [“Software 2.0”](https://karpathy.medium.com/software-2-0-a64152b37c35). In the article, Andrej refers to “Software 1.0” as human-engineered source-code that is compiled into a binary that does useful work. It’s basically, how software has been developed to date. In contrast, “Software 2.0”, is written in a much more abstract, human unfriendly language such as the weights of a neural network. It is left to the machine to determine the weights (which could be in the millions or billions for large language models) without human involvement in a process called training.
@@ -24,7 +25,7 @@ As an example, a couple of months ago I created a simple NLP interface built on 
 
 {{< figure src="netflowchat.png" alt="Figure 2 — Asking an AI a question “What devices are on my network”" caption="Figure 2 — Asking an AI a question “What devices are on my network?”" >}}
 
-It responded with a decent list, however it did miss a couple of devices. Maybe this is good enough. Maybe not. If I had implemented this using a traditional, more precise, human engineered approach, it would have responded with a complete list. 
+It responded with a decent list, however it did miss a couple of devices. Maybe this is good enough. Maybe not. If I had implemented this using a traditional, more precise, human engineered approach, it would have responded with a complete list.
 
 Bjarne’s viewpoint is interesting and one I’m not qualified to comment on. However, I would encourage software engineers to become skilled or at least familiar with the “Software 2.0” stack in addition to the classic “Software 1.0” stack because I do believe both approaches are valid. The trick is knowing which one to use for the problem at hand. Perhaps, the problem might also call for a hybrid approach.
 

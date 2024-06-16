@@ -2,6 +2,7 @@
 title = 'Building a Website From Scratch'
 date = 2024-04-17T11:00:52-04:00
 featured_image = "stratfordremodel.jpeg"
+tags = ['Web', 'Svelte', 'Cloud', 'Software Development']
 +++
 
 Two months ago, I decided I wanted to build a couple of websites. For one of the websites, I wanted a place where I could publish my articles. That particularly website is called [circleinaspiral.com](https://circleinaspiral.com). Maybe it is where you are reading this articile right now. This particular article is not about [circleinaspiral.com](https://circleinaspiral.com). Instead, it is for a website to be used to document a recent house remodel my wife and I undertook during 2023.
@@ -12,7 +13,7 @@ At the end, I summarize the take-aways you might consider for whatever your next
 
 ## The Concept
 
-The design concept is similar to those historical pictures you may have seen on the web that show a photo of how the place looked in the past and a photo of how it looks today from the same point of view. A slider enables the viewer to compare before and after without having to adjust their gaze. That was the kind of experience I wanted to create. I wanted it to be accessible from mobile devices. 
+The design concept is similar to those historical pictures you may have seen on the web that show a photo of how the place looked in the past and a photo of how it looks today from the same point of view. A slider enables the viewer to compare before and after without having to adjust their gaze. That was the kind of experience I wanted to create. I wanted it to be accessible from mobile devices.
 
 {{< figure src="stratfordremodel.jpeg" alt="The initial design concept involving sliders to show before and after" caption="The initial design concept involving sliders to show before and after" >}}
 
@@ -28,7 +29,7 @@ The website has to be as cheap as possible to run. Ideally $0-5/month.
 
 ### Low maintenance
 
-The website has to be very low maintenance. I anticipate re-entering the workforce at some point and I will not have the time to babysit the website. 
+The website has to be very low maintenance. I anticipate re-entering the workforce at some point and I will not have the time to babysit the website.
 
 It's quite easy to index on one of these requirements. For example, if all I needed was low maintenance and didn't care too much about the cost, there are plenty of SaaS offerings I could choose from. If all I needed was low cost, I could avoid subscription costs and do everything myself - but this may give me a maintenance headache.
 
@@ -38,7 +39,7 @@ The challenge is striving towards something that is both low cost AND low mainte
 
 I need to practice what I preach. The website needs to be robust and have a decent security posture. It needs to be safe for the visitors of the website.
 
-## Decisions 
+## Decisions
 
 ### Development decision - build it myself
 
@@ -62,7 +63,7 @@ The next decision was which cloud? Professionally, I have plenty of experience w
 
 ### Unit of deployment decision - container
 
-There are many options for deploying a static website. As an example, I could consider storing the content in an [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html#website-endpoint-examples) and configuring it as a static website. I could also consider spinning up a virtual machine in the cloud, and deploying the website on it directly. None of these approaches sounded appealing to me. I'm a big fan of containerized workloads as it greatly simplifies portability in addition to simplifying the build pipeline. All of the 3 major public cloud providers make it pretty easy to deploy containerized workloads. This was an easy decision to make for my particular situation. 
+There are many options for deploying a static website. As an example, I could consider storing the content in an [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html#website-endpoint-examples) and configuring it as a static website. I could also consider spinning up a virtual machine in the cloud, and deploying the website on it directly. None of these approaches sounded appealing to me. I'm a big fan of containerized workloads as it greatly simplifies portability in addition to simplifying the build pipeline. All of the 3 major public cloud providers make it pretty easy to deploy containerized workloads. This was an easy decision to make for my particular situation.
 
 If I chose in the future to move away from Azure and use something else, it would be fairly trivial to lift and move.
 
@@ -76,19 +77,17 @@ I (like much of the world today) use GitHub to store my code repos. It makes sen
 
 ### DNS Registrar decision - Squarespace
 
-Azure grants you a generated domain name for accessing your containers, however they are long and cryptic. I wanted my own custom domain for the website. I chose Squarespace and have been very happy with my decision. You can of course use Squarespace for building and hosting a complete website, but they also offer DNS registrations too and enable you to point your new domain to wherever and whatever you choose. Their support I found to be very good. It's fairly straightforward to bring your own domain to Azure and associate it with your container - you just have to go through a process of establishing trust between all parties which typically involves adding a TXT record to your domain name to assert that you own the domain. 
+Azure grants you a generated domain name for accessing your containers, however they are long and cryptic. I wanted my own custom domain for the website. I chose Squarespace and have been very happy with my decision. You can of course use Squarespace for building and hosting a complete website, but they also offer DNS registrations too and enable you to point your new domain to wherever and whatever you choose. Their support I found to be very good. It's fairly straightforward to bring your own domain to Azure and associate it with your container - you just have to go through a process of establishing trust between all parties which typically involves adding a TXT record to your domain name to assert that you own the domain.
 
 ### Allow or Disallow unencrypted traffic decision - TLS only
 
 I decided to make my website accessible only via TLS (HTTP/S). Over the past 10 years, it has been considered [a best practice](https://www.youtube.com/watch?v=cBhZ6S0PFCY) to ensure all communication is secure by default. This means the website will not be accessible over HTTP - it will be redirected to HTTP/S.
-
 
 ## The Process
 
 When we bought the house, I saved off the original listing photos. I knew we would be modifying the property over the coming years (I didn't anticipate by how much - but that's another story for another day). Once the remodeling project was complete, I attempted to take the same photo from the same spot for each original listing photograph. This would give me the basis for the before and after photographs.
 
 Before I pushed the photos to the repo, I stripped off EXIF data from the images to protect the privacy of the location. Of course, this by itself doesn't guarantee the location is private, it just requires more effort for someone to figure out the location of the photos. I wrote a quick and dirty tool called [Photoprivacyshield](https://github.com/jasondchambers/photoprivacyshield) for this purpose.
-
 
 ## Performance Optimization
 
@@ -122,7 +121,6 @@ Using Svelte, I was quite happy with the elegance of my application source code.
 
 With the introduction of Svelte, I had to re-factor my build process. I wanted to reduce the run-time dependency as much as possible. This was quite straightforward for a simple static website. To build a Svelte app, brings in a lot of dependencies. I did not want these dependencies to be folded into my container image. Fortunately, there is a solution to this problem and that is [multi-stage builds](https://docs.docker.com/build/building/multi-stage/).
 
-
 ## Summary
 
 To summarize, there are several take-aways you might want to consider for your next project whatever it might be.
@@ -132,9 +130,9 @@ These are:
 1. What are the requirements? What do you value? This will help expedite any inevitable trade-off decisions you will have to make as you progress.
 2. Design the user experience you want to create upfront. And then, figure out how you might implement the experience.
 3. Threat Modeling. I can't emphasize how important this is. It will enlighten you and your team, bring people together and again, will help guide your project. If you need help, I recommend you reach out to [Devici](https://devici.com).
-4. Try and keep things as simple as possible for as long as possible. 
+4. Try and keep things as simple as possible for as long as possible.
 5. Embrace Secure by Design principles.
 6. Consider performance optimization only if and when needed.
 7. Automate as much as possible to make it easy for you.
 8. Consider using containers as the unit of deployment. It increases cloud portability, and as your application expands in scale or complexity, you can consider [k8s](https://kubernetes.io) to orchestrate when the time is right.
-8. Have fun.
+9. Have fun.

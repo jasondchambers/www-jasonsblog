@@ -1,6 +1,7 @@
 +++
 title = 'My Advice to Developers in 2024'
 date = 2024-02-14T12:36:52-04:00
+tags = ['Career', 'Software Development']
 featured_image = "onaboat.png"
 +++
 
@@ -22,8 +23,8 @@ You will become more adaptable because new technologies typically are built on t
 
 <p style='text-align: center;'>. . .</p>
 
-*[1]: - IEEE Spectrum. Ethernet is Still Going Strong After 50 Years https://spectrum.ieee.org/ethernet-ieee-milestone*
+_[1]: - IEEE Spectrum. Ethernet is Still Going Strong After 50 Years https://spectrum.ieee.org/ethernet-ieee-milestone_
 
-*[2]: - The Next Platform. CISCO GUNS FOR INFINIBAND WITH SILICON ONE G200 https://www.nextplatform.com/2023/06/22/cisco-guns-for-infiniband-with-silicon-one-g200/*
+_[2]: - The Next Platform. CISCO GUNS FOR INFINIBAND WITH SILICON ONE G200 https://www.nextplatform.com/2023/06/22/cisco-guns-for-infiniband-with-silicon-one-g200/_
 
-*[3]: - John von Neumann. First Draft of a Report on the EDVAC https://archive.computerhistory.org/resources/text/Knuth_Don_X4100/PDF_index/k-8-pdf/k-8-u2593-Draft-EDVAC.pdf*
+_[3]: - John von Neumann. First Draft of a Report on the EDVAC https://archive.computerhistory.org/resources/text/Knuth_Don_X4100/PDF_index/k-8-pdf/k-8-u2593-Draft-EDVAC.pdf_

@@ -2,6 +2,7 @@
 title = 'Static vs Dynamic Typing — which one is the best?'
 date = 2023-11-02T11:14:00-05:00
 featured_image = "somecode.png"
+tags = ['Coding']
 +++
 
 In September 2023, Turbo 8 [announced](https://world.hey.com/dhh/turbo-8-is-dropping-typescript-70165c01) they were dropping TypeScript. This (re-)ignited the age-old debate of static vs dynamic typing and the question of which one is superior. Here’s my perspective on this enduring discussion.

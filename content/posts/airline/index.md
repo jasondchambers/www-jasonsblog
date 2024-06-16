@@ -1,6 +1,7 @@
 +++
 title = 'What the Technology Industry must learn from the Airline Industry'
 date = 2024-02-13T12:36:52-04:00
+tags = ['Security']
 featured_image = "plane.png"
 +++
 
@@ -27,6 +28,6 @@ As Elvis once said “the world’s a stage and each must play a part”. Indeed
 
 <p style='text-align: center;'>. . .</p>
 
-*[1]: - Wikipedia. DDoS attacks on Dyn https://en.wikipedia.org/wiki/DDoS_attacks_on_Dyn*
+_[1]: - Wikipedia. DDoS attacks on Dyn https://en.wikipedia.org/wiki/DDoS_attacks_on_Dyn_
 
-*[2]: - Cybersecurity and Infrastructure Security Agency (CISA), Department of Homeland Security (DHS). Request for Information on “Shifting the Balance of Cybersecurity Risk: Principles and Approaches for Secure by Design Software” https://www.federalregister.gov/documents/2023/12/20/2023-27948/request-for-information-on-shifting-the-balance-of-cybersecurity-risk-principles-and-approaches-for*
+_[2]: - Cybersecurity and Infrastructure Security Agency (CISA), Department of Homeland Security (DHS). Request for Information on “Shifting the Balance of Cybersecurity Risk: Principles and Approaches for Secure by Design Software” https://www.federalregister.gov/documents/2023/12/20/2023-27948/request-for-information-on-shifting-the-balance-of-cybersecurity-risk-principles-and-approaches-for_

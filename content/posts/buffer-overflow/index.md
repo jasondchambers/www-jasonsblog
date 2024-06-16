@@ -1,6 +1,7 @@
 +++
 title = 'Buffer overflow — what is it and why is it still such a security problem? (part 1)'
 date = 2024-01-22T12:36:52-04:00
+tags = ['Security', 'C']
 featured_image = "memory.png"
 +++
 
@@ -19,15 +20,15 @@ In no way am I knocking C. I have a fondness for C as it was the language I wrot
 Here’s our intentionally vulnerable C code. The problem is, to the untrained eye it doesn’t look vulnerable. The compiler won’t warn you that this vulnerable code be exploited in a way that could wipe out yours (or somebody else’s business) resulting in millions of dollars worth of damage.
 
 {{< highlight cpp >}}
-/* thestack.c */
+/_ thestack.c _/
 #include <string.h>
-void foo(char *input) {
-   char buff[10];
-   strcpy(buff,input);
+void foo(char \*input) {
+char buff[10];
+strcpy(buff,input);
 }
-int main(int argc, char **argv) {
-   foo(argv[1]);
-   return 0;
+int main(int argc, char \*\*argv) {
+foo(argv[1]);
+return 0;
 }
 {{< / highlight >}}
 
@@ -40,28 +41,28 @@ Let’s compile and run it a couple of times:
     $ uname -a
     Linux pop-os 6.6.6-76060606-generic #202312111032~1702306143~22.04~d28ffec SMP PREEMPT_DYNAMIC Mon D x86_64 x86_64 x86_64 GNU/Linux
     $ gcc thestack.c -o thestack
-    $ ./thestack A                          
-    $ ./thestack `python -c 'print("A"*5)'` 
+    $ ./thestack A
+    $ ./thestack `python -c 'print("A"*5)'`
     $ ./thestack `python -c 'print("A"*10)'`
     $ ./thestack `python -c 'print("A"*11)'`
     *** stack smashing detected ***: terminated
     [1]    332716 IOT instruction (core dumped)  ./thestack `python -c 'print("A"*11)'`
 
-It crashes only when we attempt to pass in 11 bytes of data (sneakily generated for us with that little bit of Python). This is the behavior observed running on my Pop!_OS machine. On a different machine with a different version of the kernel using a different distro (Kali), I get slightly different behavior:
+It crashes only when we attempt to pass in 11 bytes of data (sneakily generated for us with that little bit of Python). This is the behavior observed running on my Pop!\_OS machine. On a different machine with a different version of the kernel using a different distro (Kali), I get slightly different behavior:
 
     ┌──(jason㉿kali)-[~/buffer_overflow]
     └─$ uname -a
     Linux kali 6.5.0-kali3-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09) x86_64 GNU/Linux
-                                                                                                                                                                                 
+
     ┌──(jason㉿kali)-[~/buffer_overflow]
     └─$ gcc thestack.c -o thestack
-                                                                                                                                                                                 
+
     ┌──(jason㉿kali)-[~/buffer_overflow]
-    └─$ ./thestack A                          
-                                                                                                                                                                                 
+    └─$ ./thestack A
+
     ┌──(jason㉿kali)-[~/buffer_overflow]
     └─$ ./thestack `python -c 'print("A"*5)'`
-                                                                                                                                                                                 
+
     ┌──(jason㉿kali)-[~/buffer_overflow]
     └─$ ./thestack `python -c 'print("A"*10)'`
     zsh: segmentation fault  ./thestack `python -c 'print("A"*10)'`
@@ -238,7 +239,7 @@ Break at the same point in foo() just after the strcpy(). First notice that the 
     0x7fffffffddc0: 0x02    0x00    0x00    0x00    0x00    0x00    0x00    0x00
     0x7fffffffddc8: 0xca    0x26    0xdf    0xf7    0xff    0x7f    0x00    0x00
 
-We have corrupted the stack by 1 byte. But not enough because the return address of the next instruction once foo() has completed is still intact. In this case, we have corrupted the value of the (char *input) parameter passed to foo().
+We have corrupted the stack by 1 byte. But not enough because the return address of the next instruction once foo() has completed is still intact. In this case, we have corrupted the value of the (char \*input) parameter passed to foo().
 
 To corrupt the return address, we need over-write the stack by at least 8 bytes. Let’s try it making sure we break execution immediately after the strcpy call:
 
@@ -262,7 +263,7 @@ Ok, now let’s look at the state of our stack corruption:
     0x7fffffffddb8: 0xb0    0xda    0xff    0xf7    0x02    0x00    0x00    0x00
     0x7fffffffddc0: 0x02    0x00    0x00    0x00    0x00    0x00    0x00    0x00
     0x7fffffffddc8: 0xca    0x26    0xdf    0xf7    0xff    0x7f    0x00    0x00
-    
+
 So, in this part we have demonstrated how we can corrupt the stack. We’ve shown that a stack frame contains local variables and the values of parameters that have been passed in. Also in the stack, is the address of the next instruction to return to once the call has completed. This is implicitly added as part of the call instruction.
 
 Assuming that we can load malicious code in memory somehow, and we can roughly locate it’s address in memory (we don’t actually need to be exact), we can theoretically corrupt the stack of our vulnerable code so that arbitrary malicious code is executed instead of returning back to main.

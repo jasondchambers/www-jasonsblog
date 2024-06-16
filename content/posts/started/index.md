@@ -2,6 +2,7 @@
 title = 'How My Career in Tech Started— Part 1'
 date = 2024-02-16T12:36:52-04:00
 featured_image = "strelley.png"
+tags = ['Career']
 +++
 
 {{< figure src="strelley.png" alt="Strelley Hall — my first place of work (photo sourced from Flickr)" caption="Strelley Hall — my first place of work (photo sourced from Flickr)" link="https://www.flickr.com/photos/veggiesosage/51137631217/in/photolist-2kURJ9R-2mrKK1v-DtXjCH-2oHjMYE-2nbWJhx-2p2Zx5i-GUPX6Y-R5AsLU-QyK7ed-2nc2UmE-2nc4kZu-2cYqdK7-H1cdA7-2h91VbL-K9HqLM-7uNQQs-2mrFJjp-2mrQw8f-2mrQw4h-DS1JRs-7uNRnJ-2i9ZD87-8XBGXY-JkmypY-2nc5MBv-2nc4kYh-DUqti3-2nbWJi4-2nc2Upa-2nbWJiK-2nbWJjg-2nc3i52-2nc4kXv-2nc2UmV-2nc3i6p-2nbWJkt-2nbWJmv-2nc3i5Y-2nc4kZE-2nbWJkD-QBvohe-7GnbhN-dVyM3b-e7zn6u-9RucLZ-dVyEL7-dVyM1f-dVyLZ1-K2XqVh-9sfJTT" >}}
@@ -48,6 +49,6 @@ Things were going great. Then the UK hit a recession in 1990. PAFEC had some lay
 
 <p style='text-align: center;'>. . .</p>
 
-*[1]: - My first computer was a Sinclair ZX Spectrum. https://en.wikipedia.org/wiki/ZX_Spectrum*
+_[1]: - My first computer was a Sinclair ZX Spectrum. https://en.wikipedia.org/wiki/ZX_Spectrum_
 
-*[2]: - Tim Berners-Lee FAQ https://www.w3.org/People/Berners-Lee/FAQ.html*
+_[2]: - Tim Berners-Lee FAQ https://www.w3.org/People/Berners-Lee/FAQ.html_

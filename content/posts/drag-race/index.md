@@ -2,6 +2,7 @@
 title = 'Drag Race - Azure vs Google Cloud'
 date = 2024-04-28T11:00:52-04:00
 featured_image = "dragrace.png"
+tags =['Cloud', 'GCP', 'Azure']
 +++
 
 After over a decade working AWS, during my "sabbatical" I've had the opportunity to go multi-cloud and play around with Azure and Google Cloud. I've built 3 websites in recent months - all containerized, stateless and static. These are simple workloads, and due to the use of containers (and their stateless nature), they are highly portable. This has provided me the opportunity to do some comparisons. I'm cheap and so I optimized their deployment for cost trying to make them as cheap as possible (I've succeeded). I've traded performance for economy effectively using zero replicas. This implies a cold-start for the first request which, for low volume websites such as mine can be noticeable. When zero activity is observed, it scales back down to zero (containers). Again, for a low-volume web-site, the probability of a cold-start is typically high.

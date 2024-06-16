@@ -2,6 +2,7 @@
 title = 'Notes about Software Architecture - Part 1'
 date = 2024-05-17T10:00:00-04:00
 featured_image = "funny_architecture.jpg"
+tags = ['Software Architecture']
 +++
 
 In this series, I'd like to share my experiences of over 20+ years of architecting large complex enterprise systems, products and services. If you are involved in any kind of software development endeavor in whatever role, hopefully you find something of value in this series. The first question you may immediately ask is, if some of these guidelines are borne from experiences from years ago, surely they are out of date? Well, it's true that technology changes and the rate of change appears to be accelerating. My design for a new system, service or application today would certainly look different to a design I may have conceived of three years ago in terms of technology choices. However, what I have learned is that there are enduring architectural and software quality principles to consider that transcend trends in technology.
@@ -50,7 +51,7 @@ The fourth and final component for consideration is the people who do the actual
 
 ## Guidelines For Avoiding A Crufty Architecture
 
-Firstly, these are guidelines shaped by my experiences. They may or may not be applicable for your particular situation so don't follow blindly. 
+Firstly, these are guidelines shaped by my experiences. They may or may not be applicable for your particular situation so don't follow blindly.
 
 These guidelines are not exhaustive. I plan to continue to add to them in future articles in this series.
 
@@ -80,7 +81,7 @@ The problem was that how we organized into teams did not match horizontal layers
 
 There was tight coupling across each layer. Although we had pretty decent automated test coverage, our QA team could not be assured that a change in the UI layer from the Booking team, would not potentially introduce an unwanted side-effect across the entire site impacting the other teams. This drove up both the cost of change and the risk. The decision was made to adopt a vertical slice architecture where each slice was under the complete control and ownership of a single team. This implied some code duplication to ensure each vertical slice could be fully self-sufficient and self-contained with zero dependencies on other [vertical slices](https://www.youtube.com/watch?v=_1rjo2l17kI). This felt a little wrong as it went against the grain of "code re-use", but the truth is I would always favor loose coupling over code-reuse. There were some stable common elements where it made complete sense to push down and so we extracted that into a common layer called "Core". The approach worked enabling the teams to work more independently of each other without compromising overall site stability. In fact, the teams wanted even more fine-grained isolation.
 
-We continued to slice the architecture into more fine-grained units. There were features that were very stable and had a low rate of change and we wanted to avoid unnecessary testing where possible (at least until the cost of testing could be lowered). Finally, we evolved the architecture further where each team had their own application server instance providing O/S process isolation. 
+We continued to slice the architecture into more fine-grained units. There were features that were very stable and had a low rate of change and we wanted to avoid unnecessary testing where possible (at least until the cost of testing could be lowered). Finally, we evolved the architecture further where each team had their own application server instance providing O/S process isolation.
 
 Later in my career, I encountered a similar situation. We had a lot of tension around one particular component. For some reason, the PR cycle times were very long. This created frustrations in the form of blockers for the teams involved. Another observation was the large number of people involved in the PRs contributing to lengthy PR cycle times. Initially, I jumped to the (erroneous) conclusion that the PR process was broken and so led an effort to try and fix it. Later, I would discover that the lengthy PR cycle times were merely a symptom of a deeper problem. The problem was that the component was a shared component "owned" by many teams.
 
@@ -90,11 +91,11 @@ Using [CodeScene](https://codescene.com), a "Social Network Analysis" was used t
 
 An ideal state is where a single team (and nobody else) is the only entity working on a part of the codebase. This can be observed for "Team C". The reason why this is an ideal state is because the communication within teams is considered high-bandwidth \[ <sup>2</sup> ]. The team is aligned with the goals and each member will have a shared contextual awareness of all team activities, participating in the same activities, working on the same objectives. Information flows effortlessly within the team. Coordination costs are low. PRs are unlikely to be contentious and drag on for days because there is likely to be a deeper sense of ownership of that area of the codebase. In essence, collaboration is cheap within a team.
 
-From this analysis, we can see Team "A" and Team "B" are working on a shared component. This was the shared component that experienced very lengthy PR cycle times. 
+From this analysis, we can see Team "A" and Team "B" are working on a shared component. This was the shared component that experienced very lengthy PR cycle times.
 
-Skelton and Pais [ <sup>2</sup> ] state “The danger of allowing multiple teams to change the same system or subsystem is that no one owns either the changes made or the resulting mess". 
+Skelton and Pais [ <sup>2</sup> ] state “The danger of allowing multiple teams to change the same system or subsystem is that no one owns either the changes made or the resulting mess".
 
-The takeaway from this experience is that a component must be owned by at most one team. 
+The takeaway from this experience is that a component must be owned by at most one team.
 
 <p style='text-align: center;'>. . .</p>
 

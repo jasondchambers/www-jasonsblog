@@ -2,6 +2,7 @@
 title = 'Know Your Numbers - Health Screen Your Codebase Today'
 date = 2023-11-02T11:12:00-05:00
 featured_image = "bloodpressure.png"
+tags = ['Software Engineering']
 +++
 
 The American Heart Association refers to high blood pressure as a silent killer. Many people don’t even know they have it. Often the signs and symptoms are misunderstood. High blood pressure develops slowly over time. Undiagnosed, the consequences can be severe. Like most things, prevention is often better than the cure.
@@ -12,7 +13,7 @@ This brings to mind the concept of deteriorating health in a codebase, commonly 
 
 I like this definition of Technical Debt, excerpted from [“Managing Technical Debt in Software Engineering”](https://drops.dagstuhl.de/opus/volltexte/2016/6693/pdf/dagrep_v006_i004_p110_s16162.pdf):
 
-*“In software-intensive systems, technical debt is a collection of design or implementation constructs that are expedient in the short term, but set up a technical context that can make future changes more costly or impossible. Technical debt presents an actual or contingent liability whose impact is limited to internal system qualities, primarily maintainability and evolvability.”*
+_“In software-intensive systems, technical debt is a collection of design or implementation constructs that are expedient in the short term, but set up a technical context that can make future changes more costly or impossible. Technical debt presents an actual or contingent liability whose impact is limited to internal system qualities, primarily maintainability and evolvability.”_
 
 For the remainder of this article, I will use the generic term “code health” to represent the state of software entropy or technical debt for a particular codebase.
 
@@ -41,4 +42,3 @@ Now that we have a better understanding of what code health is, the consequences
 5. Prioritize areas that are in declining health AND that have the highest rate of change — you most likely will not have budget to fix all the issues at once.
 6. Use data to articulate the risk and the need to re-invest in the health of the codebase to inform and gain support from the stake-holders
 7. Celebrate your successes as you begin to slowly recover the health of the codebase
-

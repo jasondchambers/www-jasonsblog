@@ -2,6 +2,7 @@
 title = 'Naked AI'
 date = 2024-01-22T12:36:52-04:00
 featured_image = "figure1.png"
+tags = ['AI']
 +++
 
 Way back in 1999, a new cooking show in the UK launched called [The Naked Chef](https://en.wikipedia.org/wiki/The_Naked_Chef) starring [Jamie Oliver](https://en.wikipedia.org/wiki/Jamie_Oliver). The name comes from the style of cooking where the methods were stripped down to the bare essentials.
@@ -12,7 +13,7 @@ If we were to strip AI (artificial neural networks specifically) down to the bar
 
 As I began my journey to learn this technology, I was not getting what I needed just by following [PyTorch](https://pytorch.org/) or [TensorFlow](https://www.tensorflow.org/) tutorials. Although I was able to get things working, I remained curious as to what is actually happening underneath the covers. I also felt initially overwhelmed and bored with the concepts, the theories and the dizzying amount of algorithms related to how machines learn. For me at least, I need to learn by doing.
 
-The intent here is to provide you with a good yet very basic understanding of an [artificial neural network (ANN)](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)). Consider it a place to start your learning. We will not cover training — we will assume the network is already trained. In fact, we won’t even go into neural networks at all — we will go deeper and see what a stand-alone artificial neuron does. This is focused on helping developer’s learn AI, and so I will be using code to demonstrate the concepts. Specifically, I’m using Python — if you are not familiar with Python, don’t worry — it should be fairly easier to understand if you are familiar with other programming languages. I use Python because it has emerged as the standard programming language for machine learning.
+The intent here is to provide you with a good yet very basic understanding of an [artificial neural network (ANN)](<https://en.wikipedia.org/wiki/Neural_network_(machine_learning)>). Consider it a place to start your learning. We will not cover training — we will assume the network is already trained. In fact, we won’t even go into neural networks at all — we will go deeper and see what a stand-alone artificial neuron does. This is focused on helping developer’s learn AI, and so I will be using code to demonstrate the concepts. Specifically, I’m using Python — if you are not familiar with Python, don’t worry — it should be fairly easier to understand if you are familiar with other programming languages. I use Python because it has emerged as the standard programming language for machine learning.
 
 If you want to learn more, I recommend the [MIT Introduction to Deep Learning](https://www.youtube.com/watch?v=QDX-1M5Nj7s&list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI) available for free available on the [Alexander Amini channel](https://www.youtube.com/@AAmini).
 
@@ -58,14 +59,14 @@ Now, onto the next part — what is the weird g() in our formula and why do we n
 There are many standard off-the-shelf non-linear activation functions to choose from. In our simple example below, we use a [sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) function which is simply a squashing function.
 
 ## g() — the activation function
+
 Recall the value 107 produced earlier by our simple example above. We need to introduce some non-linearity and we decided we will use a sigmoid function which is simply a squashing function so that the value is mapped to some value between 0 and 1. We are going to leave the math formulae behind and instead jump straight into code. The only library I do use is [NumPy](https://numpy.org/) and I use it just to do some of the math for me in a succinct way. Here’s what it looks like in code:
 
-
 {{< highlight python3 >}}
-import numpy as np 
+import numpy as np
 
 def sigmoid(x):
-    return 1/(1 + np.exp(-x))
+return 1/(1 + np.exp(-x))
 {{< / highlight >}}
 
 So, if we were to run 107 through the sigmoid function, we see it returns 1.0 — meaning that it is fully activated.
@@ -95,9 +96,9 @@ Below is what a neuron looks like in code. It’s surprisingly a small amount of
 
 {{< highlight python3 >}}
 def neuron(input_values, weights):
-    output = np.dot(input_values,weights)
-    output = sigmoid(output)
-    return output
+output = np.dot(input_values,weights)
+output = sigmoid(output)
+return output
 {{< / highlight >}}
 
 Since we are in code, let’s break it down and experiment to further solidify our understanding. The code [np.dot](https://numpy.org/doc/stable/reference/generated/numpy.dot.html) is a shorthand way of calculating the dot-product of our input values and the weights. Let’s play around with it.
@@ -124,26 +125,36 @@ Now, let’s get back to solving our problem where we are trying to predict if C
 
 {{< highlight python3 >}}
 def scratch(back=False, ears=False, chin=False, belly=False):
-    input_array  = np.zeros(4)
-    input_array[0] = 1 if back is True else 0
-    input_array[1] = 1 if ears is True else 0
-    input_array[2] = 1 if chin is True else 0
-    input_array[3] = 1 if belly is True else 0
-    return input_array
+input_array = np.zeros(4)
+input_array[0] = 1 if back is True else 0
+input_array[1] = 1 if ears is True else 0
+input_array[2] = 1 if chin is True else 0
+input_array[3] = 1 if belly is True else 0
+return input_array
 {{< / highlight >}}
 
 We also need to define the weights. Again, we hard-code these here based on our knowledge of Chester’s behavior for example only. Realistically, we would not be setting these weights manually — this is where we rely on machine learning techniques to set the weights during the training of the model. We basically assign higher numbers to represent the things Chester loves and lower (negative) numbers for the things Chester hates making him less likely to purr. The numbers don’t really matter — it only matters how the inputs relate to each other. I could for example have chosen much bigger numbers for the things he hates as long as the thing he loves the most is the biggest and hence heavily weighted number.
 
 {{< highlight python3 >}}
-# Assume our neuron has been trained based on 
+
+# Assume our neuron has been trained based on
+
 # the following observations:
+
 #
+
 # - Chester loves his back being scratched
+
 # - Chester hates his ears being scratched
+
 # - Chester really likes his chin being scratched
+
 # - Chester likes his belly being scratched
+
 #
-# The array is in this order 
+
+# The array is in this order
+
 # [back, ears, chin, belly]
 
 weights = np.array([3,-10,2,1])
@@ -196,5 +207,3 @@ And that is all there is to the magic of AI (artificial neural networks to be ex
 What if this neuron was connected with others into some kind of network? Chester, in the above example is a very simple cat. But what if we take into account that Chester is hungry? or Chester has been caught out in the rain? Or Chester is in pain? These, and many others would most likely influence Chester and therefore complicate our prediction for whether he would purr or not. Imagine having neurons for each of these “features” and combining them with our simple scratching neuron we just developed. This, I hope begins to demonstrate the power of neural networks. As an exercise, perhaps you can consider extending it on your own.
 
 I hope you have found it useful. Now, to go from here you have so many options. There are tons of YouTube videos, books, on-line courses to choose from. Happy learning!
-
-

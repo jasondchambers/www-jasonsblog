@@ -2,6 +2,7 @@
 title = 'Private AI'
 date = 2024-05-15T10:00:00-04:00
 featured_image = "private_ai_architecture.svg"
+tags = ['AI']
 +++
 
 In July 2023, I knocked up a simple AI chatbot using the open source Llama model from Meta. I coded it up from scratch using [LangChain](https://www.langchain.com). It had the ability to build a vector store from your own proprietary or sensitive documents, enabling you to chat "over them", without risking [un-intentional disclosure](https://www.tomsguide.com/news/samsung-accidentally-leaked-its-secrets-to-chatgpt-three-times). It ran reasonably ok, using a quantized version of Llama, but the main selling point was the complete privacy and zero subscription costs.

@@ -1,6 +1,7 @@
 +++
 title = 'How I Engineered My Personalized Development Environment And How You Can Too'
 date = 2024-06-08T07:00:00-04:00
+tags = ['Developer Experience', 'Software Development', 'CDE', 'Docker', 'Ansible', 'Terraform', 'Automation']
 featured_image = "pde.png"
 +++
 

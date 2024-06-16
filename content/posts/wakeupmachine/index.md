@@ -2,6 +2,7 @@
 title = 'How to remotely wake a machine on the network'
 date = 2024-05-15T09:00:00-04:00
 featured_image = "wakeup_screenshot.png"
+tags = ['Docker', 'Networking']
 +++
 
 Desktop computers typically have a power-save mode which puts them in a suspended state after a period of inactivity. This is a great feature as it helps to save power and prolongs the life of the hardware. In the case of a laptop, it helps to preserve battery life too.

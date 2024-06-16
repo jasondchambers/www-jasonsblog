@@ -2,7 +2,9 @@
 title = 'Have we gone too far with “Teams”?'
 date = 2023-11-12T11:14:00-05:00
 featured_image = "wolves.png"
+tags = ['Teams', 'Software Engineering', 'Leadership']
 +++
+
 In this article, I question corporate culture’s tendency to focus exclusively on the concept of team and collaboration. Firstly, I have to say I am not knocking teams. All I am proposing is that space should be considered to accommodate, nurture and provide support for creativity and individualism.
 
 {{< figure src="wolves.png" alt="A team of wolves are able to work together to bring down large prey such as this bison" caption="A team of wolves are able to work together to bring down large prey such as this bison" >}}

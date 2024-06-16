@@ -1,6 +1,7 @@
 +++
 title = 'An Appeal to Hiring Managers'
 date = 2024-03-09T12:36:52-04:00
+tags = ['Leadership']
 featured_image = "sicily.png"
 +++
 
@@ -18,5 +19,4 @@ Something to think about. I know people on both sides of the spectrum I can conn
 
 <p style='text-align: center;'>. . .</p>
 
-*¹ Assuming the candidate has not already been filtered out by the ATS or the recruiter*
-
+_¹ Assuming the candidate has not already been filtered out by the ATS or the recruiter_

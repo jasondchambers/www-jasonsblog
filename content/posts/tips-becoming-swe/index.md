@@ -2,6 +2,7 @@
 title = 'Tips For Becoming A Software Engineer - My Journey Shared'
 date = 2023-11-12T13:14:00-05:00
 featured_image = "journey.png"
+tags = ['Software Engineering', 'Coding', 'Software Development', 'Career']
 +++
 
 {{< figure src="journey.png" alt="My personal journey through the land of programming languages" caption="My personal journey through the land of programming languages" >}}
@@ -34,11 +35,10 @@ For those who are beginning their journey, I’d like to share some take-aways f
 
 <p style='text-align: center;'>. . .</p>
 
-*[1]: — Python is not necessarily considered an object-oriented programming language — it does however support the object-oriented paradigm. It is what is considered a multi-paradigm programming language.*
+_[1]: — Python is not necessarily considered an object-oriented programming language — it does however support the object-oriented paradigm. It is what is considered a multi-paradigm programming language._
 
-*[2]: — Python is used for Stanford’s Code in Place program (of which I am a volunteer).*
+_[2]: — Python is used for Stanford’s Code in Place program (of which I am a volunteer)._
 
-*[3]: — Python is one of the most popular programming languages on the planet.*
+_[3]: — Python is one of the most popular programming languages on the planet._
 
-*[4]: — “There are mountains in our way, But we climb a step every day” — lyrics from “Up Where We Belong”, Joe Cocker and Jennifer Warnes*
-
+_[4]: — “There are mountains in our way, But we climb a step every day” — lyrics from “Up Where We Belong”, Joe Cocker and Jennifer Warnes_
